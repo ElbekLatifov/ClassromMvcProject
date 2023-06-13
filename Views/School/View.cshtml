@@ -1,0 +1,98 @@
+@using C.Services;
+@model School
+@inject GetUserId id
+<div style="display: flex; width: 100%; background-color: black; border-radius: 50px;">
+    <div style="margin: 10% 2%;">
+        <h1 style="color: green;">School : @Model.Name</h1>
+        <h2 style="color: green;">Description : @Model.Description</h2>
+        <h3 style="color: green;">Creater : @Model.Users.FirstOrDefault(p=>p.Type == EUserSchool.Creater)!.User.FirstName</h3>
+        @{
+            var userid = id.UserId;
+            if(!Model.Users.Any(p=>p.UserId == userid))
+            {
+                <a class="btn btn-info" type="submit" asp-controller="School" asp-action="Join" asp-route-id="@Model.Id">Join to school</a>
+            }
+            if(Model.Users.Any(p=>p.UserId == userid))
+            {
+                var n = Model.Users.FirstOrDefault(p=>p.UserId == userid);
+                if(n.Type == EUserSchool.Creater)
+                {
+                    <a class="btn btn-success" type="submit" asp-controller="School" asp-action="UpdateSchool" asp-route-id="@Model.Id">Update</a>
+                }
+                if(n.Type == EUserSchool.Teacher)
+                {
+                    <a class="btn btn-success" type="submit" asp-controller="Fan" asp-action="AddFan" asp-route-schoolid="@Model.Id">Add Fan</a>
+                }
+            }
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Fanlar</button>
+
+        }
+    </div>
+    <div style="margin: 5%; margin-left: 40%;">
+        <img src="@Model.PhotoUrl" alt="" style="width: 350px; height: 350px; border-radius: 50%; margin-top: 2%">
+    </div>
+
+</div>
+
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ var user = Model.Users.FirstOrDefault(p=>p.UserId == id.UserId);
+        for (int i = 0; i < Model.Users.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <td><img src="@(Model.Users[i].User.PhotoUrl)" alt="" style="width: 20px; height: 20px;"></td>
+                <td>@(Model.Users[i].User.FirstName) @(Model.Users[i].User.LastName)</td>
+                <td>@(Model.Users[i].User.PhoneNumber)</td>
+                @{ 
+                    if(user != null){
+                    if(Model.Users[i].UserId != id.UserId && Model.Users[i].Type != EUserSchool.Creater && (user.Type == EUserSchool.Creater || user.Type == EUserSchool.Admin))
+                    {
+                    <td>
+                        <div class="dropdown">
+                          <a class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @(Model.Users[i].Type)
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="UpdateRole" asp-route-userid="@Model.Users[i].UserId" asp-route-schoolid="@Model.Id" asp-route-role="@EUserSchool.Admin">Admin</a></li>
+                            <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="UpdateRole" asp-route-userid="@Model.Users[i].UserId" asp-route-schoolid="@Model.Id" asp-route-role="@EUserSchool.Teacher">Teacher</a></li>
+                            <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="UpdateRole" asp-route-userid="@Model.Users[i].UserId" asp-route-schoolid="@Model.Id" asp-route-role="@EUserSchool.Student">Student</a></li>
+                          </ul>
+                        </div>
+                    </td>
+                    }
+                    else
+                    {
+                        <td>@(Model.Users[i].Type)</td>
+                    }}
+                } 
+            </tr>
+        }}
+    </tbody>
+</table>
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">@Model.Name</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container-fluid">
+      <form class="d-flex" role="search" asp-controller="Fan" asp-action="SearchFan">
+        <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <partial name="../Fan/Index.cshtml" />
+  </div>
+</div>

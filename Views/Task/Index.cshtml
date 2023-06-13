@@ -1,0 +1,40 @@
+@using Microsoft.EntityFrameworkCore;
+
+@using ClassRoom.Data.DbContext
+@model List<TaskEntity>
+@inject AppDbContext context
+@{
+    @* var fans = await context.Fans.Where(p=>p.SchoolId == Model.Id).Include(p=>p.FanUsers).ThenInclude(p=>p.User).ToListAsync(); *@
+}
+<h1 style="text-align: center;">Fanlar</h1>
+<a asp-controller="Task" asp-action="AddTask" asp-route-id="@ViewBag.TFanId">Create</a>
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">CreatedDate</th>
+            <th scope="col">StartDate</th>
+            <th scope="col">EndDate</th>
+            <th scope="col">MaxBall</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <th>@(Model[i].Title)</th>
+                <th>@(Model[i].Description)</th>
+                <th>@(Model[i].CreatedDate)</th>
+                <th>@(Model[i].StartDate)</th>
+                <th>@(Model[i].EndDate)</th>
+                <th>@(Model[i].MaxBall)</th>
+                <th>@(Model[i].Status)</th>
+                <th><a type="button" asp-controller="Fan" asp-action="View" asp-route-id="@Model[i].Id">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+
+@model List<School>
+
+<h1 style="text-align: center;">Results</h1>
+<br>
+  <div class="btn-group dropend" style="width: 30%; margin-bottom: 10px;">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Sorting
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="MUsersCount">MUsersCount</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="mUsersCount">mUsersCount</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="Named">Named</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="false">Random</a></li>
+    </ul>
+  </div>
+
+  <br>
+<a class="btn btn-danger" asp-controller="School" asp-action="Index">Back</a>
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Users</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <th>@(Model[i].Name)</th>
+                <th>@(Model[i].Description)</th>
+                <th>@(Model[i].Users.Count)</th>
+                <th><a type="button" asp-controller="School" asp-action="View" asp-route-id="@Model[i].Id">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>

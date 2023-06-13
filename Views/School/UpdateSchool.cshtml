@@ -1,0 +1,19 @@
+
+@model UpdateSchoolDto
+
+<h1 style="margin: auto; text-align: center">Create School</h1>
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="School" asp-action="UpdateSchool" enctype="multipart/form-data" method="post">
+    <div>
+        <input name="PhotoUrl" class="form-control" asp-for="PhotoUrl" type="file" required/>
+        <span class="text-danger" asp-validation-for="PhotoUrl"></span>
+    </div>
+    <div>
+        <input name="Name" class="form-control" asp-for="Name" type="text" placeholder="Name" required/>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <input name="Description" class="form-control" asp-for="Description" type="text" placeholder="Description" required/>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <button class="form-control btn btn-success" type="submit">Update School</button>
+</form>

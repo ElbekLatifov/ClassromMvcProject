@@ -1,0 +1,29 @@
+
+@model TaskDto
+
+<h1 style="margin: auto; text-align: center">Create Task</h1>
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="Task" asp-action="AddTask" asp-route-schoolid="@ViewBag.TFanId" method="post">
+    <div>
+        <input name="Title" class="form-control" asp-for="Title" type="text" placeholder="Title" required/>
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <input name="Description" class="form-control" asp-for="Description" type="text" placeholder="Description" required/>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <input name="StartDate" class="form-control" asp-for="StartDate" type="date" placeholder="StartDate" required/>
+        <span class="text-danger" asp-validation-for="StartDate"></span>
+    </div>
+    <div>
+        <input name="EndDate" class="form-control" asp-for="EndDate" type="date" placeholder="EndDate" required/>
+        <span class="text-danger" asp-validation-for="EndDate"></span>
+    </div>
+    <div>
+        <input name="MaxBall" class="form-control" asp-for="MaxBall" type="number" placeholder="MaxBall" required/>
+        <span class="text-danger" asp-validation-for="MaxBall"></span>
+    </div>
+
+    <button class="form-control btn btn-success" type="submit">Create</button>
+    <a class="link-info" asp-controller="Task" asp-action="Index">Back</a>
+</form>

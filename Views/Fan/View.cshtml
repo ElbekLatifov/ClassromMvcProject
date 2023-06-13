@@ -1,0 +1,93 @@
+@using C.Services;
+@model Fan
+@inject GetUserId id
+<div style="display: flex; width: 100%; background-color: black; border-radius: 50px;">
+    <div style="margin: 10% 2%;">
+        <h1 style="color: green;">Fan : @Model.Name</h1>
+        <h2 style="color: green;">Description : @Model.Discription</h2>
+        <h3 style="color: green;">Teacher : @Model.FanUsers.FirstOrDefault(p=>p.Type == EUserFan.Teacher)!.User.FirstName</h3>
+        @{
+            var userid = id.UserId;
+            @* if(!Model.FanUsers.Any(p=>p.UserId == userid)) *@
+            @* { *@
+                @* <a class="btn btn-info" type="submit" asp-controller="School" asp-action="Join" asp-route-id="@Model.Id">Join to school</a> *@
+            @* } *@
+            if(Model.FanUsers.Any(p=>p.UserId == userid))
+            {
+                var n = Model.FanUsers.FirstOrDefault(p=>p.UserId == userid);
+                if(n.Type == EUserFan.Teacher)
+                {
+                    <a class="btn btn-success" type="submit" asp-controller="Fan" asp-action="Share" asp-route-fanid="@Model.Id">to share</a>
+                    <a class="btn btn-success" type="submit" asp-controller="Task" asp-action="Index" asp-route-id="@Model.Id">Tasks</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="mdo">Add Task</button>
+                    @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button> *@
+                    @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> *@
+                    
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                              </div>
+                              <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a type="button" class="btn btn-primary" asp-controller="Task" asp-action="AddTask" asp-route-id="@Model.Id">Send message</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+    <div style="margin: 5%; margin-left: 40%;">
+        <img src="@Model.FanUsers.FirstOrDefault(p=>p.UserId == Model.FanUsers.FirstOrDefault(p=>p.Type == EUserFan.Teacher)!.User.Id).User.PhotoUrl" alt="" style="width: 350px; height: 350px; border-radius: 50%; margin-top: 2%; padding: 2%">
+    </div>
+
+</div>
+
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Name</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Role</th>
+            <th scope="col">Nb</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+        for (int i = 0; i < Model.FanUsers.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <td><img src="@(Model.FanUsers[i].User.PhotoUrl)" alt="" style="width: 20px; height: 20px;"></td>
+                <td>@(Model.FanUsers[i].User.FirstName) @(Model.FanUsers[i].User.LastName)</td>
+                <td>@(Model.FanUsers[i].User.UserName)</td>
+                <td>@(Model.FanUsers[i].User.PhoneNumber)</td>
+                <td>@(Model.FanUsers[i].Type)</td>
+                <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    </div>
+                </td>
+            </tr>
+        }}
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+@using Microsoft.EntityFrameworkCore;
+
+@using ClassRoom.Data.DbContext
+@model School
+@inject AppDbContext context
+@{
+    var fans = await context.Fans.Where(p=>p.SchoolId == Model.Id).Include(p=>p.FanUsers).ThenInclude(p=>p.User).ToListAsync();
+}
+<h1 style="text-align: center;">Fanlar</h1>
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Users</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < fans.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <th>@(fans[i].Name)</th>
+                <th>@(fans[i].Discription)</th>
+                <th>@(fans[i].FanUsers.Count)</th>
+                <th><a type="button" asp-controller="Fan" asp-action="View" asp-route-id="@fans[i].Id">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>

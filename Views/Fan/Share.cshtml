@@ -1,0 +1,11 @@
+
+@model TaklifnomaDto
+
+<h1 style="margin: auto; text-align: center">Share</h1>
+<form class="row g-3" style="width: 400px; margin: auto" asp-controller="Fan" asp-action="Share" asp-route-fanid="@ViewBag.FanId" method="post">
+    <div>
+        <input name="UserName" class="form-control" asp-for="UserName" type="text" placeholder="UserName" required/>
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+    <button class="form-control btn btn-success" type="submit">Send request</button>
+</form>

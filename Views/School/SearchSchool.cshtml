@@ -1,0 +1,38 @@
+@model List<School>
+<div class="row">
+    <h1 style="text-align: center;">Schools result</h1>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid" style="float: right;">
+        <form class="d-flex" role="search" asp-controller="School" asp-action="SearchSchool">
+          <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+</div>
+<a asp-controller="School" asp-action="Index">Back</a>
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Users</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <th scope="col">@(i+1)</th>
+                <th><img src="@(Model[i].PhotoUrl)" alt="" style="width: 30px; height: 30px; border-radius: 50%"></th>
+                <th>@(Model[i].Name)</th>
+                <th>@(Model[i].Description)</th>
+                <th>@(Model[i].Users.Count)</th>
+                <th><a class="btn btn-primary" type="button" asp-controller="School" asp-action="View" asp-route-id="@Model[i].Id">View</a></th>
+            </tr>
+        }
+    </tbody>
+</table>

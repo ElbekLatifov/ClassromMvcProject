@@ -1,0 +1,98 @@
+
+@model List<School>
+<h1 style="text-align: center;">Schools</h1>
+<div class="row" style="display: flex; margin-bottom: 5%;">
+  <div class="container-fluid" style="width: 30%">
+    <form class="d-flex" role="search" asp-controller="School" asp-action="SearchSchool">
+      <input name="name" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" required>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="btn-group dropend" style="width: 30%">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Sorting
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="MUsersCount">MUsersCount</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="mUsersCount">mUsersCount</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="true" asp-route-query="Named">Named</a></li>
+      <li><a class="dropdown-item" type="button" asp-controller="School" asp-action="Index" asp-route-sort="false">Random</a></li>
+    </ul>
+  </div>
+  <a class="btn btn-warning" asp-controller="School" asp-action="CreateSchool" style="width: 30%">Create School</a>
+</div>
+@{
+  var page = ViewBag.Page;
+  var tugash = page * 6 + 6 <= Model.Count ? (page * 6 + 6) : Model.Count;
+} 
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            @for (int i = page * 6; i < tugash; i++)
+            {
+              <div class="col">
+                <div class="card" style="margin-top: 1%;">
+                  <img src="@(Model[i].PhotoUrl)" class="card-img-top" alt="..." style="height: 50%">
+                  <div class="card-body">
+                    <h3 class="card-title" style="color: blue;"><strong>@(Model[i].Name)</strong></h3>
+                    <p class="card-text" style="color: red;">Description : @(Model[i].Description)</p>
+                    <h5 class="card-title" style="color: green;">Users : @(Model[i].Users.Count)</h5>
+                  </div>
+                  <a class="btn btn-primary" type="button" asp-controller="School" asp-action="View" asp-route-id="@Model[i].Id">View</a>
+                </div>
+              </div>
+            }
+          </div>
+
+@{ bool juft = false; bool toq = false;
+if(Model.Count>0)
+{
+  if(Model.Count % 2 == 0)
+  {
+    juft = true;
+  }
+  else
+  {
+    toq = true;
+  }
+      <nav class="d-flex justify-content-center" aria-label="Page navigation example" style="width: 60%; margin-top: 30px; margin-left: 20%; margin-right: 20%;">
+        <ul class="pagination" style="">
+            @if(page > 0)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="School" 
+                asp-action="Index" 
+                asp-route-page="@(page-1)">Previous</a></li>
+            }
+            @if(juft)
+            {
+              @for (int i = 0; i < Model.Count/6; i++)
+              {
+                <li class="page-item"><a class="page-link" asp-controller="School" 
+                asp-action="Index" 
+                asp-route-page="@i">@(i+1)</a></li>
+              }
+              if(page < Model.Count/6-1)
+              {
+                <li class="page-item"><a class="page-link" asp-controller="School" 
+                asp-action="Index" 
+                asp-route-page="@(page+1)">Next</a></li>
+              }         
+            }
+            @if(toq)
+            {
+              @for (int i = 0; i < Model.Count/6+1; i++)
+              {
+                  <li class="page-item"><a class="page-link" asp-controller="School" 
+                  asp-action="Index" 
+                  asp-route-page="@i">@(i+1)</a></li>
+              }
+              if(page < Model.Count/6)
+              {
+                  <li class="page-item"><a class="page-link" asp-controller="School" 
+                  asp-action="Index" 
+                  asp-route-page="@(page+1)">Next</a></li>
+              }         
+            }
+           
+        </ul>
+    </nav>
+}
+}

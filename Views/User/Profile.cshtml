@@ -1,0 +1,65 @@
+@using ClassRoom.Data.DbContext
+@using Microsoft.EntityFrameworkCore;
+@model User
+@inject AppDbContext context
+
+<h1 style="text-align: center;">Profile</h1>
+<div style="display: flex; margin: 3%; padding: 2%;">
+    <div style="margin: 1%;">
+        <h3>@Model.FirstName</h3>
+        <h3>@Model.LastName</h3>
+        <h3>@Model.UserName</h3>
+    </div>
+    <div style="margin: 1%;">
+        <img src="@Model.PhotoUrl" alt="" style="width: 250px; height: 250px; border-radius: 50%;">
+    </div>
+    <div style="margin: 1%;">
+        <a class="btn btn-danger" asp-controller="User" asp-action="LogOut">LogOut</a>
+        <a class="btn btn-secondary" asp-controller="User" asp-action="Update">Update</a>
+    </div>
+</div>
+
+@{
+    var list = await context.Requests.Where(p=>p.ToUserId == Model.Id).Include(p=>p.Fan).Include(p=>p.FromUser).ToListAsync();
+    int a = 0;
+    if(list != null)
+    {
+        a = list.Count;
+    }
+}
+<p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Takliflar <span class="badge text-bg-danger">@(a)</span>
+    </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <table class="table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Request</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                if(list != null)
+                {
+                    for (int i = 0; i < list.Count; i++)
+                    { var s = $"{list[i].FromUser.FirstName} {list[i].FromUser.LastName} joined you to {list[i].Fan.Name}";
+                        <tr>
+                            <th scope="col">@(i+1)</th>
+                            <th>@(s)</th>
+                            <th>
+                                <a class="btn btn-success" type="button" asp-controller="Fan" asp-action="JoinR" asp-route-reqid="@list[i].Id" asp-route-j="true">Join</a>
+                                <a class="btn btn-danger" type="button" asp-controller="Fan" asp-action="JoinR" asp-route-reqid="@list[i].Id" asp-route-j="false">Reject</a>
+                            </th>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+  </div>
+</div>

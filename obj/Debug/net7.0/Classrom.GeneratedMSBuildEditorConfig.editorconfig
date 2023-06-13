@@ -1,0 +1,125 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Classrom
+build_property.RootNamespace = Classrom
+build_property.ProjectDir = d:\Classrom\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = d:\Classrom
+build_property._RazorSourceGeneratorDebug = 
+
+[d:/Classrom/Views/Fan/AddFan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXEFkZEZhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Fan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Fan/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXE5vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Fan/SearchFan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXFNlYXJjaEZhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Fan/Share.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXFNoYXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Fan/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFuXFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/CreateSchool.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXENyZWF0ZVNjaG9vbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXE5vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/SearchSchool.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXFNlYXJjaFNjaG9vbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/Sorting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXFNvcnRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/Students.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXFN0dWRlbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/UpdateSchool.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXFVwZGF0ZVNjaG9vbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/School/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Nob29sXFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Task/AddTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xBZGRUYXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Task/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Task/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/User/SignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/User/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Classrom/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-f9b4pbw86g

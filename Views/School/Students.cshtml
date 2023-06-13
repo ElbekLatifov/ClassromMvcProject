@@ -1,0 +1,23 @@
+@model School
+
+<table>
+    <thead>
+        <tr>№</tr>
+        <td>Logo</td>
+        <td>Name</td>
+        <td>UserName</td>
+        <td>Phone</td>
+    </thead>
+    <tbody>
+        @{
+            for (int i = 0; i < Model.Users.Count; i++)
+            {
+                <th>@(i+1)</th>
+                <th><img src="@(Model.Users[i].User.PhotoUrl)" alt="" style="height: 30px; width: 30px;"></th>
+                <th>@(Model.Users[i].User.FirstName) @(Model.Users[i].User.LastName)</th>
+                <th>@(Model.Users[i].User.UserName)</th>
+                <th>@(Model.Users[i].User.PhoneNumber)</th>
+            }
+        }
+    </tbody>
+</table>
